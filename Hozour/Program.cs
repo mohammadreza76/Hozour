@@ -12,7 +12,7 @@ namespace Hozour
         {
             var aljebra = new ClassRoom("motahari", "جبر خطی", 40201);
             aljebra.CheckHozour();
-            //aljebra.f();
+          
      
             aljebra.history();
             using (StreamReader sr = File.OpenText("hozour.txt"))
@@ -56,7 +56,7 @@ namespace Hozour
         private string teacher;
         private string nameClass;
         private int idGroup;
-        //List<Student> lists = new List<Student>();
+        
         
         public Dictionary<string, ArrayList> ListHozour = new Dictionary<string, ArrayList>();
 
@@ -105,7 +105,7 @@ namespace Hozour
             ListHozour.Add(today.ToString("dd-MM-yyyy"),lists);
 
         }
-        public void f()
+        /*public void f()
         {
             foreach (var item in ListHozour)
             {
@@ -113,28 +113,22 @@ namespace Hozour
                 Console.WriteLine("[{0} {1} {2}]", item.Key, studentInstant.Name, studentInstant.Id);
                 
             }
-        }
+        }*/
 
         //write the listhozour in file
         public void history()
         {
             using (StreamWriter file = new StreamWriter("hozour.txt"))
             {
-                /* for(int i = 0; i < ListHozour.Count; i ++ )
-                 {
-                     var item = ListHozour.ElementAt(i);
-                     var itemKey = item.Key;
-                     var itemValue = item.Value;
-                     var studentInstant = (Student)itemValue[i];
-                     file.WriteLine("[{0} {1} {2}]", itemKey, studentInstant.Name, studentInstant.Id );
-
-                 }*/
-                int i = 0; 
+              
                 foreach (var item in ListHozour)
                 {
-                    var studentInstant = (Student)item.Value[i];
-                    file.WriteLine("[{0} {1} {2}]", item.Key, studentInstant.Name, studentInstant.Id);
-                    i += 1;
+                    for (int j = 0; j < item.Value.Count; j++)
+                    {
+                        var studentInstant = (Student)item.Value[j];
+                        file.WriteLine("[{0} {1} {2}]", item.Key, studentInstant.Name, studentInstant.Id);
+                    }
+       
                 }
 
             }
