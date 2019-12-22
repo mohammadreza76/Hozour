@@ -120,17 +120,24 @@ namespace Hozour
         {
             using (StreamWriter file = new StreamWriter("hozour.txt"))
             {
-                for(int i = 0; i < ListHozour.Count; i ++ )
+                /* for(int i = 0; i < ListHozour.Count; i ++ )
+                 {
+                     var item = ListHozour.ElementAt(i);
+                     var itemKey = item.Key;
+                     var itemValue = item.Value;
+                     var studentInstant = (Student)itemValue[i];
+                     file.WriteLine("[{0} {1} {2}]", itemKey, studentInstant.Name, studentInstant.Id );
+
+                 }*/
+                int i = 0; 
+                foreach (var item in ListHozour)
                 {
-                    var item = ListHozour.ElementAt(i);
-                    var itemKey = item.Key;
-                    var itemValue = item.Value;
-                    var studentInstant = (Student)itemValue[i];
-                    file.WriteLine("[{0} {1} {2}]", itemKey, studentInstant.Name, studentInstant.Id );
-                    
+                    var studentInstant = (Student)item.Value[i];
+                    file.WriteLine("[{0} {1} {2}]", item.Key, studentInstant.Name, studentInstant.Id);
+                    i += 1;
                 }
-                
-           }
+
+            }
 
          
 
